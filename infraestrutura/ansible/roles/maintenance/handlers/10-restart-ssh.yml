@@ -1,0 +1,8 @@
+---
+################################################
+# SSH RESTART
+################################################
+- name: restart ssh service
+  service:
+    name: "ssh"
+    state: restarted

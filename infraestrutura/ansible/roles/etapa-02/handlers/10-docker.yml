@@ -1,0 +1,14 @@
+---
+################################################
+# DOCKER INSTALLATION
+################################################
+- name: Docker Installation
+  shell: curl -sSL https://get.docker.com/ | sh
+  register: docker_install_result
+  changed_when: docker_install_result.stdout is defined and docker_install_result.stdout != ""
+
+- name: Enable Docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes

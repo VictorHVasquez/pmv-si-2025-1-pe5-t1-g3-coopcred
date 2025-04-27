@@ -1,0 +1,6 @@
+---
+all:
+  hosts:
+    prd01-web-faculdade-server:
+      ansible_host: 54.157.196.42
+      ansible_user: ubuntu

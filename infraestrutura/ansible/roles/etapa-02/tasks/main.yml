@@ -1,0 +1,53 @@
+---
+- name: Load Variable Files (.yml)
+  include_vars:
+    dir: "{{ inventory_dir }}/role-etapa02"
+
+################################################
+# DOCKER HANDLER
+################################################
+- name: Verify if docker is instaalled
+  command: which docker
+  register: docker_check
+  failed_when: false
+  changed_when: docker_check.rc != 0
+  notify: Docker Installation
+
+################################################
+# NGINX HANDLER
+################################################
+- name: Ensure Nginx is installed and configured
+  command: which nginx
+  register: nginx_check
+  failed_when: false
+  changed_when: nginx_check.rc != 0
+  notify: Install Nginx
+
+################################################
+# CERTBOT HANDLER
+################################################
+- name: Check if SSL is required
+  debug:
+    msg: "Checking if Certbot SSL certificates are required"
+  changed_when: reverse_proxy.CERTBOT_SSL | default(false) | bool
+  notify: Install Certbot
+
+################################################
+# NGINX-CONF HANDLER
+################################################
+- name: Configure Nginx sites
+  debug:
+    msg: "Configuring Nginx sites based on SSL requirement: {{ reverse_proxy.CERTBOT_SSL | default(false) }}"
+  changed_when: true
+  notify: 
+    - Remove default Nginx site files
+    - Deploy non-SSL Nginx configurations
+
+################################################
+# DEPLOYMENT HANDLER
+################################################
+- name: Deploy applications
+  debug:
+    msg: "Deploying applications: {{ application_deployment.APPLICATIONS | map(attribute='application') | join(', ') }}"
+  changed_when: true
+  notify: Deploy applications

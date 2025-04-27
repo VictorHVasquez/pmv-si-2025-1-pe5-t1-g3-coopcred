@@ -1,0 +1,10 @@
+---
+all:
+  hosts:
+    dev01-web-faculdade-server:
+      ansible_host: 54.88.223.26
+      ansible_user: ubuntu
+
+    dev02-web-faculdade-server:
+      ansible_host: 3.82.162.144
+      ansible_user: ubuntu

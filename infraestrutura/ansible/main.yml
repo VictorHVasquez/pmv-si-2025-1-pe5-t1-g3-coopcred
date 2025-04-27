@@ -1,0 +1,10 @@
+---
+- name: Role Etapa 02 
+  hosts: 
+    - dev01-web-faculdade-server
+    - dev02-web-faculdade-server
+  become: yes
+  roles:
+    - maintenance
+    - etapa-02
+  

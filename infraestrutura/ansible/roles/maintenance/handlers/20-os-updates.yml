@@ -1,0 +1,10 @@
+---
+################################################
+# PERFORM OS UPDATES
+################################################
+- name: update system packages
+  apt:
+    upgrade: dist
+    autoremove: yes
+    autoclean: yes
+  register: apt_upgrade_result

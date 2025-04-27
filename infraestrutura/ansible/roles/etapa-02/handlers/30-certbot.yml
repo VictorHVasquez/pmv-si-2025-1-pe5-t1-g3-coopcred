@@ -1,0 +1,22 @@
+---
+################################################
+# CERTBOT INSTALLATION
+################################################
+- name: Install Certbot
+  apt:
+    name: 
+      - certbot
+      - python3-certbot-nginx
+    state: present
+    update_cache: yes
+  when: reverse_proxy.CERTBOT_SSL | default(false) | bool
+  register: certbot_install
+
+- name: Ensure Certbot auto renewal is configured
+  cron:
+    name: "Certbot automatic renewal"
+    job: "certbot renew --quiet"
+    hour: "3"
+    minute: "30"
+    weekday: "1"
+  when: reverse_proxy.CERTBOT_SSL | default(false) | bool

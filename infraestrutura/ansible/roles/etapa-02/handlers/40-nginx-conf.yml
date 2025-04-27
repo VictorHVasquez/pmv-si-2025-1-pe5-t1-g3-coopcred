@@ -1,0 +1,56 @@
+---
+################################################
+# NGINX CONFIGURATION
+################################################
+
+################# NOSSL DEPLOY
+- name: Deploy non-SSL Nginx configurations
+  template:
+    src: "{{ playbook_dir }}/roles/etapa-02/templates/reverse-proxy/nossl/{{ item.domain }}.j2"
+    dest: "/etc/nginx/conf.d/{{ item.domain }}.conf"
+    owner: root
+    group: root
+    mode: '0644'
+  loop: "{{ reverse_proxy.DOMAINS }}"
+  when: not (reverse_proxy.CERTBOT_SSL | default(false) | bool)
+  register: nossl_configs_deployed
+
+################# SSL DEPLOY
+- name: Deploy SSL template for Certbot
+  template:
+    src: "{{ playbook_dir }}/roles/etapa-02/templates/reverse-proxy/ssl-template/ssl-template.j2"
+    dest: "/etc/nginx/conf.d/{{ item.domain }}.conf"
+    owner: root
+    group: root
+    mode: '0644'
+  loop: "{{ reverse_proxy.DOMAINS }}"
+  when: reverse_proxy.CERTBOT_SSL | default(false) | bool
+  register: ssl_template_deployed
+
+- name: Generate Let's Encrypt certificates with Certbot
+  command: >
+    certbot --nginx --non-interactive --agree-tos -m admin@{{ item.domain }}
+    --domains {{ item.domain }} --redirect
+  loop: "{{ reverse_proxy.DOMAINS }}"
+  when: 
+    - reverse_proxy.CERTBOT_SSL | default(false) | bool
+    - ssl_template_deployed is changed
+  register: certbot_certificates
+
+- name: Deploy final SSL configurations
+  template:
+    src: "{{ playbook_dir }}/roles/etapa-02/templates/reverse-proxy/ssl/{{ item.domain | replace('.', '-') }}-conf.j2"
+    dest: "/etc/nginx/conf.d/{{ item.domain }}.conf"
+    owner: root
+    group: root
+    mode: '0644'
+  loop: "{{ reverse_proxy.DOMAINS }}"
+  when: 
+    - reverse_proxy.CERTBOT_SSL | default(false) | bool
+    - certbot_certificates is changed
+  notify: Restart Nginx
+
+- name: Restart Nginx
+  systemd:
+    name: nginx
+    state: Restarted

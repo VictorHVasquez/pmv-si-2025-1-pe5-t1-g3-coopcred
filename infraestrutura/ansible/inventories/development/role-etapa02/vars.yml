@@ -1,0 +1,12 @@
+reverse_proxy:
+  # Set it to "true" if u want to generate Certbot Certificates
+  CERTBOT_SSL: false
+  DOMAINS: 
+    - domain: dev06.pnunes-develop.work
+      port: 3001
+
+application_deployment:
+  APPLICATIONS:
+    - application: Kuma
+      directory: "/opt/kuma"
+      application_vars: kuma

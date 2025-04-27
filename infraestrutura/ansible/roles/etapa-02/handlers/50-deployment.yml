@@ -1,0 +1,76 @@
+---
+################################################
+# DEPLOYMENT APPLICATIONS
+# FROM TEMPLATES FOLDER
+################################################
+- name: Deploy applications
+  debug:
+    msg: "Starting deployment process for applications"
+  changed_when: true
+
+- name: Create application directories
+  ansible.builtin.file:
+    path: "{{ item.directory }}"
+    state: directory
+    mode: '0755'
+  loop: "{{ application_deployment.APPLICATIONS }}"
+  loop_control:
+    label: "Creating directory for {{ item.application }}"
+  listen: Deploy applications
+
+- name: Check if template directory exists
+  stat:
+    path: "{{ role_path }}/templates/deployment/{{ item.application }}"
+  register: template_dir_check
+  loop: "{{ application_deployment.APPLICATIONS }}"
+  loop_control:
+    label: "{{ item.application }}"
+  listen: Deploy applications
+
+- name: Copy Kuma template files
+  ansible.builtin.copy:
+    src: "{{ role_path }}/templates/deployment/Kuma/"
+    dest: "{{ item.directory }}/"
+    mode: preserve
+    directory_mode: '0755'
+    force: yes
+  loop: "{{ application_deployment.APPLICATIONS }}"
+  when: item.application == 'Kuma'
+  listen: Deploy applications
+
+- name: Create .env file content for each application
+  blockinfile:
+    path: "{{ item.directory }}/.env"
+    create: yes
+    mode: '0644'
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      {% if item.application_vars is defined %}
+      {% set vars_dict = lookup('vars', item.application_vars) %}
+      {% for key, value in vars_dict.items() %}
+      {{ key }}={{ value }}
+      {% endfor %}
+      {% endif %}
+  loop: "{{ application_deployment.APPLICATIONS }}"
+  listen: Deploy applications
+
+- name: Create template directories if they don't exist
+  ansible.builtin.file:
+    path: "{{ role_path }}/templates/deployment/{{ item.application }}"
+    state: directory
+    mode: '0755'
+  loop: "{{ application_deployment.APPLICATIONS }}"
+  loop_control:
+    label: "Creating template directory for {{ item.application }}"
+  when: template_dir_check.results | selectattr('item.application', 'equalto', item.application) | map(attribute='stat.exists') | list | first | bool == false
+  listen: Deploy applications
+
+- name: Run docker compose up -d
+  ansible.builtin.shell:
+    cmd: "cd {{ item.directory }} && docker compose up -d"
+  args:
+    chdir: "{{ item.directory }}"
+  loop: "{{ application_deployment.APPLICATIONS }}"
+  loop_control:
+    label: "Starting containers for {{ item.application }}"
+  listen: Deploy applications

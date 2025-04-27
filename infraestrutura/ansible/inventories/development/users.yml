@@ -1,0 +1,12 @@
+users:
+  - username: pnunes
+    state: absent 
+    shell: /bin/bash
+    groups: [users]
+    key_file: [pnunes.pub]
+
+  - username: pneus
+    state: absent 
+    shell: /bin/bash
+    groups: [users]
+    key_file: [pnunes.pub]
