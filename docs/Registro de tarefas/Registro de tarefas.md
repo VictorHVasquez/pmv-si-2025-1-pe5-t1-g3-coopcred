@@ -15,13 +15,11 @@ Participou ativamente em todas as reuniões de alinhamento da etapa.
 
 
 
-
-
 ## Integrante: Lucas Morais Barcelos:
 
-**Na primeira parte do projeto**, 
+**Na primeira etapa do projeto**, participei com a equipe na criação do diagrama no Packet Tracer, revisei a documentação do projeto e a arquitetura em nuvem na AWS conforme a solução definida. Além disso, acompanhei e validei o desenvolvimento do código Terraform para a automação da infraestrutura na nuvem.
 
-**Na segunda parte do projeto**, 
+**Na segunda etapa do projeto**, acompanhei ativamente o trabalho no ambiente em nuvem, participei das reuniões de apresentação para a turma, revisei o código Terraform e Ansible para a automação da configuração das máquinas. Junto com a equipe, configuramos o ambiente na AWS, realizei o acompanhamento da gravação dos vídeos de entrega e também fui responsável pela edição final do material.
 
 
 
