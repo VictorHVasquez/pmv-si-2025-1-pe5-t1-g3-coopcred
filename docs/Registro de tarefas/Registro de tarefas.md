@@ -27,7 +27,7 @@ Participou ativamente em todas as reuniões de alinhamento da etapa.
 
 ## Integrante: Pedro Henrique Nunes Alves:
 
-**Na Primeira parte do projeto**, trabalhei junto com toda a equipe na montagem do diagrama no Packet Tracer, auxiliou na documentação do projeto e alinhou a arquitetura cloud na AWS de acordo com a solução proposta. Também foi responsável pelo desenvolvimento do código Terraform para automação da infraestrutura na nuvem.
+**Na Primeira parte do projeto**, trabalhei junto com toda a equipe na montagem do diagrama no Packet Tracer, auxiliei na documentação do projeto e alinhei a arquitetura cloud na AWS de acordo com a solução proposta. Também fui responsável pelo desenvolvimento do código Terraform para automação da infraestrutura na nuvem.
 
 **Na segunda parte do projeto**, participei ativamente do ambiente em nuvem, realizando reuniões de apresentação com a turma, desenvolvendo melhorias no código Terraform e desenvolvendo o código Ansible para automação de configuração nas máquinas. Em conjunto com a equipe, também configuramos o ambiente na AWS e gravamos os vídeos de entrega
 
