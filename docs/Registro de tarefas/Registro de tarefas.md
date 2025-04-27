@@ -39,6 +39,6 @@ Participou ativamente em todas as reuniões de alinhamento da etapa.
 
 ## Integrante: Vinícius Pereira Coelho:
 
-**Na Primeira parte do projeto**, 
+**Na Primeira parte do projeto**, fui responsável por grande parte das configurações realizadas no Packet Tracer, atuando de forma colaborativa com toda a equipe na definição e implementação da topologia da rede. 
 
-**Na segunda parte do projeto**,
+**Na segunda parte do projeto**, realizei a configuração do ambiente no VirtualBox (com a participação do Ítalo e da Jully), incluindo a configuração do DHCP, Active Directory, Políticas de Grupo e DNS. Além disso, contribuiu para a gravação da demonstração e ficou responsável pela edição do vídeo explicativo. Na documentação, implementou as imagens do VirtualBox. Participou ativamente de todas as reuniões de alinhamento da etapa, garantindo a comunicação eficiente entre a equipe..
