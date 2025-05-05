@@ -150,6 +150,12 @@ Essas faixas serão subdivididas em sub-redes **/24** para garantir **organizaç
 | PC                   | 40         | 200              |
 | **Total**            |            | **225**          |
 
+# 📶 Cálculo de Links de Dados e de Internet
+
+![Image](https://github.com/user-attachments/assets/11551ee2-2966-4397-8241-ebe0edf57f7c)
+
+*Figura 2 - Tabela de Cálculo de Links de Dados e de Internet.*
+
 ---
 
 # 📌 Tabela de Endereçamento IP - Matriz - Uberaba – MG
