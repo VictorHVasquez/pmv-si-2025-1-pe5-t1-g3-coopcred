@@ -120,11 +120,11 @@ Essas faixas serão subdivididas em sub-redes **/24** para garantir **organizaç
 | **DMZ E-mail**    | Uberaba - MG               | 172.16.10.0/27     | 255.255.255.224  | 30                |
 
 
-# 📋 Tabela de Materiais
+# 📋 Tabela de Materiais 
 
 ## Matriz
 
-**Tabela 3 - Equipamentos - Matriz**
+**Tabela 3 - [Equipamentos](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t1-g3-coopcred/raw/main/docs/Prototipo%20de%20rede/Planilha%20Equipamentos-%20Template.xlsx) - Matriz**
 
 | Equipamento          | Quantidade |
 |----------------------|------------|
@@ -137,7 +137,9 @@ Essas faixas serão subdivididas em sub-redes **/24** para garantir **organizaç
 
 ## Filiais
 
-**Tabela 4 - Equipamentos - Filiais**
+**Tabela 4 - [Equipamentos](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t1-g3-coopcred/raw/main/docs/Prototipo%20de%20rede/Planilha%20Equipamentos-%20Template.xlsx) - Filiais**
+
+
 
 | Equipamento          | Quantidade | Total por filial |
 |----------------------|------------|------------------|
