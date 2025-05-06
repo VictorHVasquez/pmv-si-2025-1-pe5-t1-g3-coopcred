@@ -1,8 +1,9 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/9lYuEWwT)
+
 <h1 align="center">Infraestrutura de redes – CoopCred</h1> 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/70c8ec8d-d3f5-498a-89d8-6945f8f8224d" alt="Image" />
+  <img src="https://github.com/user-attachments/assets/7638a4c0-12cd-42ba-9084-693655287c95" alt="logo CoopCred" />
 </p>
 
 
