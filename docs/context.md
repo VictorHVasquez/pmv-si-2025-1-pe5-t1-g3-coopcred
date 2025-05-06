@@ -23,9 +23,8 @@ Visão: Ser referência no setor de cooperativas de crédito em Minas Gerais, de
 Este projeto visa desenvolver a infraestrutura de rede para a CoopCred, garantindo a conectividade confiável entre a matriz e as filiais, além de oferecer serviços internos essenciais para o funcionamento seguro e eficiente da instituição.
 A infraestrutura será projetada para suportar os serviços financeiros da cooperativa, incluindo operações bancárias internas, sistemas de transações online, comunicação entre unidades e segurança dos dados. Para isso, serão implementadas segmentações de rede, políticas de segurança e redundância para minimizar falhas, assegurando alta disponibilidade e proteção das informações sensíveis da instituição.
 
-## Objetivo
+## Objetivos específicos
 
-O objetivo deste documento é:
 
 - Documentar a infraestrutura de rede da CoopCred, proporcionando uma visão clara de sua composição atual;
 - Servir como base para manutenção, expansão e auditoria da rede corporativa;
