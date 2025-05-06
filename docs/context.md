@@ -1,5 +1,9 @@
 # Introdução
 
+Este documento tem como finalidade apresentar a infraestrutura de rede da CoopCred, detalhando os recursos físicos e lógicos envolvidos, sua topologia, os padrões adotados e as medidas de segurança implementadas. A proposta é fornecer uma visão clara e técnica do ambiente atual, servindo como base para manutenção, expansão e auditorias futuras.
+
+## Apresentação Institucional e Diretrizes Estratégicas
+
 A CoopCred - Cooperativa de Crédito de Minas Gerais foi fundada com o objetivo de oferecer soluções financeiras acessíveis e seguras para seus cooperados. Com sede na cidade de Uberaba - MG, a cooperativa expandiu suas atividades e hoje conta com cinco filiais distribuídas em cidades próximas, consolidando-se como uma instituição confiável no setor financeiro. Atualmente, a empresa possui um quadro de 350 funcionários, que atuam para garantir a qualidade e eficiência dos serviços prestados.
 
 As filiais da CoopCred estão localizadas nas seguintes cidades:
@@ -15,8 +19,19 @@ Visão: Ser referência no setor de cooperativas de crédito em Minas Gerais, de
 
 
 # Projeto de Infraestrutura de Rede
+
 Este projeto visa desenvolver a infraestrutura de rede para a CoopCred, garantindo a conectividade confiável entre a matriz e as filiais, além de oferecer serviços internos essenciais para o funcionamento seguro e eficiente da instituição.
 A infraestrutura será projetada para suportar os serviços financeiros da cooperativa, incluindo operações bancárias internas, sistemas de transações online, comunicação entre unidades e segurança dos dados. Para isso, serão implementadas segmentações de rede, políticas de segurança e redundância para minimizar falhas, assegurando alta disponibilidade e proteção das informações sensíveis da instituição.
+
+## Objetivo
+
+O objetivo deste documento é:
+
+- Documentar a infraestrutura de rede da CoopCred, proporcionando uma visão clara de sua composição atual;
+- Servir como base para manutenção, expansão e auditoria da rede corporativa;
+- Garantir o alinhamento com as melhores práticas de TI e segurança da informação;
+- Apoiar o time técnico em tomadas de decisão estratégicas e operacionais;
+- Facilitar o onboarding de novos profissionais da área de infraestrutura.
 
 # Estrutura Organizacional da CoopCred
 
