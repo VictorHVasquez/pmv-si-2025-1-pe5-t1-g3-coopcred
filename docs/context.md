@@ -76,7 +76,7 @@ A distribuição dos colaboradores da CoopCred está organizada entre a matriz e
 
 A rede será projetada com foco em segmentação, segurança e alta disponibilidade. A comunicação entre as unidades será estabelecida por meio de uma **WAN** em **Anel**, na qual as filiais estão interconectadas entre si e com a matriz, formando um circuito fechado. Essa topologia proporciona redundância, garantindo que, em caso de falha em um dos links, o tráfego de dados seja redirecionado por um caminho alternativo, assegurando a continuidade e resiliência da rede.
 
-
+![Image](https://github.com/user-attachments/assets/88cc7020-69c8-46d2-ab2c-300bc97ff3b8)
 *Figura 1 - Topologia.*
 
 Cada filial estará conectada às outras unidades e à matriz por meio de links dedicados, utilizando tecnologias como **VPN/MPLS**. Essas tecnologias garantirão a segurança da comunicação por meio de criptografia avançada e políticas rigorosas de controle de acesso, assegurando a integridade e confidencialidade dos dados.
