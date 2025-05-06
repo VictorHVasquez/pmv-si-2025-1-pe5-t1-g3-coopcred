@@ -30,7 +30,7 @@ A infraestrutura será projetada para suportar os serviços financeiros da coope
 - Servir como base para manutenção, expansão e auditoria da rede corporativa;
 - Garantir o alinhamento com as melhores práticas de TI e segurança da informação;
 - Apoiar o time técnico em tomadas de decisão estratégicas e operacionais;
-- 
+
 
 # Estrutura Organizacional da CoopCred
 
