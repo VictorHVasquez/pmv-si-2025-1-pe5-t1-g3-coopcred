@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoopCred</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        header {
+            background: linear-gradient(to right, #0d2b0b, #1e6d24);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Espaço entre imagem e texto */
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            /* Ajuste o valor para o arredondamento que preferir */
+            object-fit: cover;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* BANNER */
+        .banner {
+            position: relative;
+            height: 400px;
+            background-image: url('imgs/Hero_Section.png');
+            /* Imagem Hero */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .banner-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Sombra escura transparente */
+            padding: 2rem;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+        }
+
+        /* SERVIÇOS */
+        .servicos {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .servicos h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #1e6d24;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"><img src="imgs/Logo.png" alt="Logo da CoopCred"></div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Serviços</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="banner-overlay">
+            <h1>Bem-vindo à CoopCred</h1>
+            <p>Liderando o Agro, fortalecendo o seu Futuro</p>
+        </div>
+    </section>
+
+
+    <section class="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Crédito Rural</h3>
+                <p>Financiamento acessível para sua produção agrícola crescer com sustentabilidade.</p>
+            </div>
+            <div class="card">
+                <h3>Investimentos</h3>
+                <p>Aplicações seguras para cooperados que querem rentabilidade com confiança.</p>
+            </div>
+            <div class="card">
+                <h3>Consórcios</h3>
+                <p>Planos de consórcio para aquisição de veículos, máquinas e imóveis rurais.</p>
+            </div>
+            <div class="card">
+                <h3>Seguros Agro</h3>
+                <p>Proteção contra riscos climáticos e prejuízos no campo. Segurança para sua lavoura.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 CoopCred. Todos os direitos reservados.
+    </footer>
+
+</body>
+
+</html>
