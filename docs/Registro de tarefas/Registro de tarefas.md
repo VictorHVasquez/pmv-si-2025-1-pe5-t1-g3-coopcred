@@ -30,6 +30,7 @@ Participou ativamente em todas as reuniões de alinhamento da etapa.
 
 **Na segunda parte do projeto**, participei ativamente do ambiente em nuvem, realizando reuniões de apresentação com a turma, desenvolvendo melhorias no código Terraform e desenvolvendo o código Ansible para automação de configuração nas máquinas. Em conjunto com a equipe, também configuramos o ambiente na AWS e gravamos os vídeos de entrega. Trabalhei também na documentação e criação do diagrama do ambiente AWS.
 
+**Na terceira parte do projeto**, Participei ativamente do processo de deploy e pesquisa da solução de monitoramento Zabbix, incluindo a instalação e configuração dos agentes nas máquinas monitoradas. Além disso, contribuí na estruturação e desenvolvimento do frontend e backend da aplicação. Também fui ativo nas reuniões e na comunicacao em equipe.
 
 ## Integrante: Victor Hugo Vasquez da Silva:
 
