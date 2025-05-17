@@ -25,4 +25,4 @@ jobs:
 
       - name: Executar Docker Compose no servidor remoto
         run: |
-          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ${{ secrets.REMOTE_PATH }} && sudo docker compose up -d"
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ${{ secrets.REMOTE_PATH }} && sudo docker compose up -d --build"
