@@ -5,7 +5,7 @@
 **Na segunda parte do projeto**, foi responsável pela configuração do ambiente virtual no VirtualBox(Com a participação do Vinícius e da Jully), realizando a distribuição de IP via DHCP, a configuração do Active Directory (AD), das Políticas de Grupo (GPO) e do DNS integrado ao AD.Realizou a gravação do vídeo de demonstração do VirtualBOX.
 Participou ativamente em todas as reuniões de alinhamento da etapa.
 
-**Na terceira parte do projeto**, realizei parte do processo de implementação e pesquisa da solução de monitoramento Zabbix do VirtualBox, contribui na instalação e configuração dos agentes nas máquinas monitoradas. Também fui ativo nas reuniões e na comunicação em equipe e algumas pequenas correções no packter tracer para o funcionamento adequado de alguns aspectos ainda pendentes.
+**Na terceira parte do projeto**, realizei parte do processo de implementação e pesquisa da solução de monitoramento Zabbix do VirtualBox, contribui na instalação e na configuração dos agentes nas máquinas monitoradas. Também fui ativo nas reuniões, na comunicação em equipe e em algumas pequenas correções no packet tracer para o funcionamento adequado de alguns aspectos ainda pendentes.
 
 
 ## Integrante: Jully Anne Roman Palhano Dutra:
