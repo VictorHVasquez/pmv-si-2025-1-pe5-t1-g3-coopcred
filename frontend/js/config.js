@@ -1,4 +1,4 @@
-const backendUrl = "http://localhost:3000";
+const backendUrl = "http://44.200.125.230:3000";
 
 document.getElementById("form").addEventListener("submit", async (e) => {
   e.preventDefault();
