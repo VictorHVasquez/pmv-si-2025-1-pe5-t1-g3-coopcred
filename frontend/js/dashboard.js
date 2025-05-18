@@ -18,7 +18,6 @@ const contaNumeroInput = document.getElementById('conta-numero');
 function gerarNumeroConta() {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
-
 contaNumeroInput.value = gerarNumeroConta();
 
 // Armazenamento local temporário das contas
@@ -74,6 +73,7 @@ function preencherTabelaContas(lista) {
   });
 }
 
+// Filtro de busca
 const buscaInput = document.getElementById('busca-conta');
 buscaInput.addEventListener('input', () => {
   const termo = buscaInput.value.toLowerCase();
@@ -107,4 +107,22 @@ formUsuario.addEventListener('submit', (e) => {
 // Logout
 document.getElementById('logout-btn').addEventListener('click', () => {
   alert('Logout realizado!');
+});
+
+/* 
+  >>> MÁSCARA DE CPF <<<
+  Esta parte aplica uma máscara no campo CPF, formatando como 000.000.000-00
+*/
+const cpfInput = document.getElementById('conta-cpf');
+
+cpfInput.addEventListener('input', () => {
+  let valor = cpfInput.value.replace(/\D/g, '');
+
+  if (valor.length > 11) valor = valor.slice(0, 11);
+
+  valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+  valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+  valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+  cpfInput.value = valor;
 });

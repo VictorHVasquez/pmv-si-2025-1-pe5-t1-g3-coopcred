@@ -84,20 +84,27 @@
 
     <section id="usuario-cadastro" class="section-panel">
       <h2>Cadastro de Usuário</h2>
-      <form id="usuario-cadastro-form" class="form-panel">
-        <label for="usuario-nome">Nome</label>
-        <input type="text" id="usuario-nome" name="usuario-nome" required />
+      <div id="msg"></div>
 
-        <label for="usuario-email">Email</label>
-        <input type="email" id="usuario-email" name="usuario-email" required />
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Email</th>
+            <th>Setor</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
-        <label for="usuario-senha">Senha</label>
-        <input type="password" id="usuario-senha" name="usuario-senha" required />
-
-        <label for="usuario-setor">Setor</label>
-        <input type="text" id="usuario-setor" name="usuario-setor" required />
-
-        <button type="submit">Cadastrar Usuário</button>
+      <h2>Adicionar Usuário</h2>
+      <form id="addUserForm">
+        <input type="text" id="username" placeholder="Usuário" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="text" id="setor" placeholder="Setor" required />
+        <button type="submit">Adicionar</button>
       </form>
     </section>
   </main>
