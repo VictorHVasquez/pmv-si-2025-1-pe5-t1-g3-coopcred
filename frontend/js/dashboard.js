@@ -20,6 +20,25 @@ function gerarNumeroConta() {
 }
 contaNumeroInput.value = gerarNumeroConta();
 
+  // Máscara CPF
+  const cpfInput = document.getElementById('conta-cpf');
+  cpfInput.addEventListener('input', function () {
+    let cpf = this.value.replace(/\D/g, '');
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    this.value = cpf;
+  });
+
+  // Máscara telefone
+  const telefoneInput = document.getElementById('conta-telefone');
+  telefoneInput.addEventListener('input', function () {
+    let tel = this.value.replace(/\D/g, '');
+    tel = tel.replace(/^(\d{2})(\d)/g, '($1) $2');
+    tel = tel.replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+    this.value = tel;
+  });
+
 // Armazenamento local temporário das contas
 const contas = [];
 
@@ -37,7 +56,7 @@ formConta.addEventListener('submit', (e) => {
   const numeroConta = formConta['conta-numero'].value;
 
   // Criar conta
-  const conta = { nome, telefone, email, endereco, tipo, numero: numeroConta };
+  const conta = { nome, cpf, telefone, email, endereco, tipo, numero: numeroConta };
   contas.push(conta);
 
   alert('Conta cadastrada com sucesso!');
@@ -55,7 +74,7 @@ function preencherTabelaContas(lista) {
   tabelaContasBody.innerHTML = '';
 
   if (lista.length === 0) {
-    tabelaContasBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Nenhuma conta cadastrada.</td></tr>';
+    tabelaContasBody.innerHTML = '<tr><td colspan="7" style="text-align:center;">Nenhuma conta cadastrada.</td></tr>';
     return;
   }
 
@@ -63,6 +82,7 @@ function preencherTabelaContas(lista) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${conta.nome}</td>
+      <td>${conta.cpf}</td>
       <td>${conta.telefone}</td>
       <td>${conta.email}</td>
       <td>${conta.endereco}</td>
@@ -91,38 +111,25 @@ buscaInput.addEventListener('input', () => {
 
 // Formulário de cadastro de usuário
 const formUsuario = document.getElementById('usuario-cadastro-form');
-formUsuario.addEventListener('submit', (e) => {
-  e.preventDefault();
+if (formUsuario) {
+  formUsuario.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const nome = formUsuario['usuario-nome'].value.trim();
-  const email = formUsuario['usuario-email'].value.trim();
-  const senha = formUsuario['usuario-senha'].value;
-  const setor = formUsuario['usuario-setor'].value.trim();
+    const nome = formUsuario['usuario-nome'].value.trim();
+    const email = formUsuario['usuario-email'].value.trim();
+    const senha = formUsuario['usuario-senha'].value;
+    const setor = formUsuario['usuario-setor'].value.trim();
 
-  alert(`Usuário ${nome} cadastrado com sucesso!`);
+    alert(`Usuário ${nome} cadastrado com sucesso!`);
 
-  formUsuario.reset();
-});
+    formUsuario.reset();
+  });
+}
 
 // Logout
-document.getElementById('logout-btn').addEventListener('click', () => {
-  alert('Logout realizado!');
-});
-
-/* 
-  >>> MÁSCARA DE CPF <<<
-  Esta parte aplica uma máscara no campo CPF, formatando como 000.000.000-00
-*/
-const cpfInput = document.getElementById('conta-cpf');
-
-cpfInput.addEventListener('input', () => {
-  let valor = cpfInput.value.replace(/\D/g, '');
-
-  if (valor.length > 11) valor = valor.slice(0, 11);
-
-  valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-  valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-  valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-
-  cpfInput.value = valor;
-});
+const logoutBtn = document.getElementById('logout-btn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    alert('Logout realizado!');
+  });
+}

@@ -32,7 +32,7 @@
         <input type="text" id="conta-nome" name="conta-nome" required />
 
         <label for="conta-cpf">CPF</label>
-        <input type="tel" id="conta-cpf" name="CPF" required />
+        <input type="text" id="conta-cpf" name="CPF" required />
 
         <label for="conta-telefone">Telefone</label>
         <input type="tel" id="conta-telefone" name="conta-telefone" required />
@@ -101,9 +101,10 @@
 
       <h2>Adicionar Usuário</h2>
       <form id="addUserForm">
-        <input type="text" id="username" placeholder="Usuário" required />
-        <input type="email" id="email" placeholder="Email" required />
-        <input type="text" id="setor" placeholder="Setor" required />
+        <input type="text" name="username" placeholder="Nome" required />
+        <input type="email" name="email" placeholder="E-mail" required />
+        <input type="text" name="setor" placeholder="Setor" />
+        <input type="password" name="password" placeholder="Senha" required />
         <button type="submit">Adicionar</button>
       </form>
     </section>

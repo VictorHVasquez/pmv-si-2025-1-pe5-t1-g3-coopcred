@@ -43,87 +43,8 @@
   </footer>
 
   <script src="./js/config.js"></script>
-  <script>
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const forms = document.querySelectorAll('.auth-form');
-    
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        forms.forEach(form => form.classList.remove('active'));
-        
-        button.classList.add('active');
-        
-        const tabName = button.getAttribute('data-tab');
-        document.getElementById(`${tabName}-form`).classList.add('active');
-      });
-    });
-
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    const API = window.API_URL || 'http://44.204.138.207:3000';
-
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(loginForm);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const res = await fetch(`${API}/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        const result = await res.json();
-        
-        if (res.ok) {
-          if (result.token) {
-            localStorage.setItem('token', result.token);
-          }
-          
-          window.location.href = 'dashboard.html';
-        } else {
-          alert(result.message || result.error || 'Erro ao fazer login');
-        }
-      } catch (error) {
-        alert('Erro ao conectar com o servidor');
-        console.error(error);
-      }
-    });
-
-    registerForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(registerForm);
-      const data = Object.fromEntries(formData.entries());
-      
-      if (data.password !== data.confirmarSenha) {
-        alert('As senhas não coincidem');
-        return;
-      }
-      
-      delete data.confirmarSenha;
-
-      try {
-        const res = await fetch(`${API}/register`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        const result = await res.json();
-        alert(result.message || result.error);
-        
-        if (res.ok) {
-          document.querySelector('[data-tab="login"]').click();
-          registerForm.reset();
-        }
-      } catch (error) {
-        alert('Erro ao conectar com o servidor');
-        console.error(error);
-      }
-    });
-  </script>
+  <script src="./js/authenticated.js"></script>
+  
 </body>
 
 </html>
