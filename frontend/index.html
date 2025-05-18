@@ -24,15 +24,30 @@
     </div>
   </section>
 
-<!-- Área de Login -->
-<section class="login-area">
-    <div class="login-container">
-      <h2>Área de Acesso</h2>
-      <form class="login-form" action="login.html" method="post">
-        <input type="text" name="usuario" placeholder="Usuário" required />
-        <input type="password" name="senha" placeholder="Senha" required />
-        <button type="submit">Entrar</button>
-      </form>
+  <section class="login-area">
+    <div class="auth-container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="login">Entrar</button>
+        <button class="tab-btn" data-tab="register">Registrar</button>
+      </div>
+      
+      <div class="form-container">
+        <form id="login-form" class="auth-form active">
+          <h2>Acessar Conta</h2>
+          <input type="text" name="username" placeholder="Nome de Usuário" required />
+          <input type="password" name="password" placeholder="Senha" required />
+          <button type="submit">Entrar</button>
+        </form>
+        
+        <form id="register-form" class="auth-form">
+          <h2>Criar Conta</h2>
+          <input type="text" name="username" placeholder="Nome de Usuário" required />
+          <input type="email" name="email" placeholder="E-mail" required />
+          <input type="password" name="password" placeholder="Senha" required />
+          <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" required />
+          <button type="submit">Registrar</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -42,34 +57,67 @@
 
   <script src="./js/config.js"></script>
   <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const forms = document.querySelectorAll('.auth-form');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        forms.forEach(form => form.classList.remove('active'));
+        
+        button.classList.add('active');
+        
+        const tabName = button.getAttribute('data-tab');
+        document.getElementById(`${tabName}-form`).classList.add('active');
+      });
+    });
+
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
-
-    const API = window.API_URL || 'http://44.200.125.230:3000';
+    const API = window.API_URL || 'http://44.204.138.207:3000';
 
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(loginForm);
       const data = Object.fromEntries(formData.entries());
 
-      const res = await fetch(`${API}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+      try {
+        const res = await fetch(`${API}/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
 
-      const result = await res.json();
-      alert(result.message || result.error);
-      if (res.ok) window.location.href = 'dashboard.html';
+        const result = await res.json();
+        
+        if (res.ok) {
+          if (result.token) {
+            localStorage.setItem('token', result.token);
+          }
+          
+          window.location.href = 'dashboard.html';
+        } else {
+          alert(result.message || result.error || 'Erro ao fazer login');
+        }
+      } catch (error) {
+        alert('Erro ao conectar com o servidor');
+        console.error(error);
+      }
     });
 
-    // Se não usar cadastro na mesma página, pode remover este bloco
-    if(registerForm){
-      registerForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(registerForm);
-        const data = Object.fromEntries(formData.entries());
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(registerForm);
+      const data = Object.fromEntries(formData.entries());
+      
+      if (data.password !== data.confirmarSenha) {
+        alert('As senhas não coincidem');
+        return;
+      }
+      
+      delete data.confirmarSenha;
 
+      try {
         const res = await fetch(`${API}/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -78,8 +126,16 @@
 
         const result = await res.json();
         alert(result.message || result.error);
-      });
-    }
+        
+        if (res.ok) {
+          document.querySelector('[data-tab="login"]').click();
+          registerForm.reset();
+        }
+      } catch (error) {
+        alert('Erro ao conectar com o servidor');
+        console.error(error);
+      }
+    });
   </script>
 </body>
 

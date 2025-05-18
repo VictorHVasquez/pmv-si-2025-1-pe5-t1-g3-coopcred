@@ -73,7 +73,6 @@ function preencherTabelaContas(lista) {
   });
 }
 
-// Filtrar contas pela busca
 const buscaInput = document.getElementById('busca-conta');
 buscaInput.addEventListener('input', () => {
   const termo = buscaInput.value.toLowerCase();
