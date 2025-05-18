@@ -2,61 +2,85 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CoopCred</title>
-    <link rel="stylesheet" href="./css/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoopCred</title>
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="icon" type="image/x-icon" href="./imgs/favicon.png" />
 </head>
 
 <body>
-
-    <header>
-        <div class="logo"><img src="imgs/Logo.png" alt="Logo da CoopCred"></div>
-        <nav>
-            <a href="#">Início</a>
-            <a href="#">Serviços</a>
-            <a href="#">Sobre</a>
-            <a href="#">Contato</a>
-            <a href="login.html">Login</a>
-        </nav>
-    </header>
-
-    <section class="banner">
-    <img src="imgs/Hero_Section.png" alt="Fundo" class="background-image" />
-    <div class="banner-overlay">
-        <h1>Bem-vindo à CoopCred</h1>
-        <p>Liderando o Agro, fortalecendo o seu Futuro</p>
+  <header>
+    <div class="logo">
+      <img src="./imgs/Logo.png" alt="Logo da CoopCred" />
     </div>
-    </section>
+  </header>
 
-    <section class="servicos">
-        <h2>Nossos Serviços</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Crédito Rural</h3>
-                <p>Financiamento acessível para sua produção agrícola crescer com sustentabilidade.</p>
-            </div>
-            <div class="card">
-                <h3>Investimentos</h3>
-                <p>Aplicações seguras para cooperados que querem rentabilidade com confiança.</p>
-            </div>
-            <div class="card">
-                <h3>Consórcios</h3>
-                <p>Planos de consórcio para aquisição de veículos, máquinas e imóveis rurais.</p>
-            </div>
-            <div class="card">
-                <h3>Seguros Agro</h3>
-                <p>Proteção contra riscos climáticos e prejuízos no campo. Segurança para sua lavoura.</p>
-            </div>
-        </div>
-    </section>
+  <section class="banner">
+    <img src="./imgs/Hero_Section.png" alt="Fundo" class="background-image" />
+    <div class="banner-overlay">
+      <h1>Bem-vindo à CoopCred</h1>
+      <p>Liderando o Agro, fortalecendo o seu Futuro</p>
+    </div>
+  </section>
 
+<!-- Área de Login -->
+<section class="login-area">
+    <div class="login-container">
+      <h2>Área de Acesso</h2>
+      <form class="login-form" action="login.html" method="post">
+        <input type="text" name="usuario" placeholder="Usuário" required />
+        <input type="password" name="senha" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </section>
 
-    <footer>
-        &copy; 2025 CoopCred. Todos os direitos reservados.
-    </footer>
+  <footer>
+    &copy; 2025 CoopCred. Todos os direitos reservados.
+  </footer>
 
-    <script src="js/config.js"></script>
+  <script src="./js/config.js"></script>
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+
+    const API = window.API_URL || 'http://44.200.125.230:3000';
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(loginForm);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch(`${API}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      alert(result.message || result.error);
+      if (res.ok) window.location.href = 'dashboard.html';
+    });
+
+    // Se não usar cadastro na mesma página, pode remover este bloco
+    if(registerForm){
+      registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(registerForm);
+        const data = Object.fromEntries(formData.entries());
+
+        const res = await fetch(`${API}/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        alert(result.message || result.error);
+      });
+    }
+  </script>
 </body>
 
 </html>
