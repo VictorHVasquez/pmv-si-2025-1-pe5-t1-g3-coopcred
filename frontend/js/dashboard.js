@@ -30,6 +30,7 @@ formConta.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const nome = formConta['conta-nome'].value.trim();
+  const cpf = formConta['conta-cpf'].value.trim();
   const telefone = formConta['conta-telefone'].value.trim();
   const email = formConta['conta-email'].value.trim();
   const endereco = formConta['conta-endereco'].value.trim();
