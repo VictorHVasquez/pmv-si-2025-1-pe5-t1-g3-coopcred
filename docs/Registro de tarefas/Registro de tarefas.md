@@ -15,7 +15,7 @@ Participou ativamente em todas as reuniões de alinhamento da etapa.
 **Na segunda parte do projeto**, foi responsável pela configuração do servidor FTP, colaborou ativamente na elaboração do documento técnico com as informações da etapa e também auxiliou na configuração do ambiente virtualizado no VirtualBox (Com a participação do Ítalo e Vinícius).Partucipou da gravação do vídeo de demonstração do VirtualBOX.
 Participou ativamente em todas as reuniões de alinhamento da etapa.
 
-**Na terceira parte do projeto**, participei ativamente junto ao grupo na configuração do sistema Zabbix, Além disso, contribui no desenvolvimento da aplicação, atuando tanto no front-end quanto no back-end, colaborando na programação e implementação das funcionalidades necessárias.
+**Na terceira parte do projeto**, participei ativamente junto ao grupo na configuração do sistema Zabbix, Além disso, contribui no desenvolvimento da aplicação, atuando tanto no front-end quanto no back-end, colaborando na programação e implementação das funcionalidades necessárias. Também fui ativa nas reuniões de alinhamento da etapa e realizei também a aplicação da page WEB no packet tracer e ajustes do de correçao da 1 etapa.
 
 
 ## Integrante: Lucas Morais Barcelos:
