@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  bookstack:
+    image: solidnerd/bookstack:22.04
+    container_name: bookstack_22.04
+    ports:
+      - "${BOOKSTACK_PORT:-8080}:8080"
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - APP_URL=${APP_URL}
+    networks:
+      - bookstack_nw
+    restart: unless-stopped
+
+networks:
+  bookstack_nw:
+    driver: bridge

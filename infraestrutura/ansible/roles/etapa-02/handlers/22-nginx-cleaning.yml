@@ -1,0 +1,13 @@
+---
+################################################
+# NGINX CLEANING
+################################################
+- name: Remove default Nginx site files
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/nginx/sites-available/default
+    - /etc/nginx/sites-enabled/default
+  register: default_site_removed
+  notify: Restart Nginx

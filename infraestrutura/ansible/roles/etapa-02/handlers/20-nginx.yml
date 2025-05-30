@@ -1,0 +1,16 @@
+---
+################################################
+# NGINX INSTALLATION
+################################################
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+  register: nginx_install
+
+- name: Enable and start Nginx service
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes

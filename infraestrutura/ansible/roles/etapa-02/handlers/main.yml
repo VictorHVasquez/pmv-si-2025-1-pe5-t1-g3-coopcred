@@ -1,0 +1,11 @@
+---
+################################################
+# IMPORT HANDLERS
+################################################
+- import_tasks: 10-docker.yml
+- import_tasks: 20-nginx.yml
+- import_tasks: 21-nginx-restart.yml
+- import_tasks: 22-nginx-cleaning.yml
+- import_tasks: 30-certbot.yml
+- import_tasks: 40-nginx-conf.yml
+- import_tasks: 50-deployment.yml

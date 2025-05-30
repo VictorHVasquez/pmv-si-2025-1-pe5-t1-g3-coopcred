@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - CoopCred</title>
+  <link rel="icon" type="image/x-icon" href="./imgs/favicon.png" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="./imgs/Logo.png" alt="Logo da CoopCred" />
+      <h1>CoopCred</h1>
+    </div>
+    <nav>
+      <button data-target="conta-cadastro" class="nav-btn active">Cadastro Conta</button>
+      <button data-target="conta-lista" class="nav-btn">Lista Contas</button>
+      <button data-target="transacoes" class="nav-btn">Transações</button>
+      <button data-target="usuario-cadastro" class="nav-btn">Cadastro Usuário</button>
+      <button id="logout-btn">Sair</button>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="conta-cadastro" class="active section-panel">
+      <h2>Cadastro de Conta Bancária</h2>
+      <form id="conta-cadastro-form" class="form-panel">
+        <label for="conta-nome">Nome</label>
+        <input type="text" id="conta-nome" name="conta-nome" required />
+
+        <label for="conta-cpf">CPF</label>
+        <input type="text" id="conta-cpf" name="CPF" required />
+
+        <label for="conta-telefone">Telefone</label>
+        <input type="tel" id="conta-telefone" name="conta-telefone" required />
+
+        <label for="conta-email">Email</label>
+        <input type="email" id="conta-email" name="conta-email" required />
+
+        <label for="conta-endereco">Endereço</label>
+        <input type="text" id="conta-endereco" name="conta-endereco" required />
+
+        <label for="conta-tipo">Tipo</label>
+        <select id="conta-tipo" name="conta-tipo" required>
+          <option value="">Selecione</option>
+          <option value="poupanca">Poupança</option>
+          <option value="corrente">Corrente</option>
+        </select>
+
+        <label for="conta-numero">Número da Conta</label>
+        <input type="text" id="conta-numero" name="conta-numero" readonly />
+
+        <button type="submit">Cadastrar Conta</button>
+      </form>
+    </section>
+
+    <section id="conta-lista" class="section-panel">
+      <h2>Lista de Contas Bancárias</h2>
+      <input type="text" id="busca-conta" placeholder="Buscar por nome, email ou número da conta" autocomplete="off" />
+      <table id="tabela-contas">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Tipo</th>
+            <th>Número</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="transacoes" class="section-panel">
+      <h2>Transações Bancárias</h2>
+      <p>Aqui serão exibidas as transações bancárias (a implementar).</p>
+    </section>
+
+    <section id="usuario-cadastro" class="section-panel">
+      <h2>Cadastro de Usuário</h2>
+      <div id="msg"></div>
+
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Email</th>
+            <th>Setor</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <h2>Adicionar Usuário</h2>
+      <form id="addUserForm">
+        <input type="text" name="username" placeholder="Nome" required />
+        <input type="email" name="email" placeholder="E-mail" required />
+        <input type="text" name="setor" placeholder="Setor" />
+        <input type="password" name="password" placeholder="Senha" required />
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="./js/dashboard.js"></script>
+  <script src="./js/authenticated.js"></script>
+</body>
+
+</html>

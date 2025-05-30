@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: coopcred-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: coopcred
+    volumes:
+      - postgres_dateee:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - coopcred-net
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: example
+      DB_NAME: coopcred
+    depends_on:
+      - db
+    networks:
+      - coopcred-net
+
+  frontend:
+    image: nginx:alpine
+    container_name: coopcred-frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+    networks:
+      - coopcred-net
+
+volumes:
+  postgres_dateee:
+
+networks:
+  coopcred-net:

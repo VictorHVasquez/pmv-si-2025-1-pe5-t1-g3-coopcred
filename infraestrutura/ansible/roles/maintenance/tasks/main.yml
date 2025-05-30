@@ -1,0 +1,94 @@
+---
+##################################################################
+# 10-restart-ssh.yml
+# User Management - Linux
+##################################################################
+- name: Load users from environment file
+  include_vars:
+    file: "{{ inventory_dir }}/users.yml"
+    name: environment_users
+
+- name: Create or remove users
+  user:
+    name: "{{ item.username }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    groups: "{{ item.groups | default([]) }}"
+    append: "{{ item.append | default(true) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ environment_users.users }}"
+  register: user_creation
+  notify: restart ssh service
+
+- name: Ensure .ssh directory exists
+  file:
+    path: "/home/{{ item.username }}/.ssh"
+    state: directory
+    mode: '0700'
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+  loop: "{{ environment_users.users }}"
+  when: item.state | default('present') == 'present'
+
+- name: Add authorized keys from files (single key)
+  authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ lookup('file', '{{ playbook_dir }}/keys/{{ item.key_file }}') }}"
+    state: present
+  loop: "{{ environment_users.users }}"
+  when: 
+    - item.state | default('present') == 'present'
+    - item.key_file is defined
+    - item.key_file is string
+
+- name: Add authorized keys from files (multiple keys)
+  authorized_key:
+    user: "{{ item.0.username }}"
+    key: "{{ lookup('file', '{{ playbook_dir }}/keys/{{ item.1 }}') }}"
+    state: present
+  with_subelements:
+    - "{{ environment_users.users | selectattr('key_file', 'defined') | selectattr('key_file', 'iterable') | rejectattr('key_file', 'string') | list }}"
+    - key_file
+  when: item.0.state | default('present') == 'present'
+
+- name: Add authorized keys from direct content
+  authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ item.ssh_key }}"
+    state: present
+  loop: "{{ environment_users.users }}"
+  when: 
+    - item.state | default('present') == 'present'
+    - item.ssh_key is defined
+
+- name: Configure sudoers for users with sudo access
+  lineinfile:
+    path: "/etc/sudoers.d/{{ item.username }}"
+    line: "{{ item.username }} ALL=(ALL) NOPASSWD: ALL"
+    create: yes
+    mode: '0440'
+    owner: root
+    group: root
+    validate: "visudo -cf %s"
+  loop: "{{ environment_users.users }}"
+  when:
+    - item.state | default('present') == 'present'
+    - "'sudo' in item.groups"
+
+##################################################################
+# 20-os-updates.yml
+# Perform OS updates -- Ubuntu
+##################################################################
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  notify: update system packages
+
+- name: Check if reboot is required
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_required_file
+
+- name: Show reboot status
+  debug:
+    msg: "System reboot is required."
+  when: reboot_required_file.stat.exists
